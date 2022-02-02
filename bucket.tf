@@ -28,6 +28,10 @@ resource "aws_s3_bucket" "web" {
   acl           = var.bucket_acl
   force_destroy = var.bucket_force_destroy
 
+  website {
+    index_document = "index.html"
+    error_document = "404.html"
+  }
   tags = merge(
     {
       "Name" = format("%s", "Bucket for CloudFront ${var.environment}")
