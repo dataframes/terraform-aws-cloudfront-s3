@@ -10,10 +10,6 @@ resource "aws_cloudfront_distribution" "web" {
   origin {
     domain_name = "${aws_s3_bucket.web.website_endpoint}"
     origin_id   = "${var.environment}-${var.name}"
-
-    s3_origin_config {
-      origin_access_identity = aws_cloudfront_origin_access_identity.origin_access_identity.cloudfront_access_identity_path
-    }
     
     custom_origin_config {
       origin_protocol_policy = "http-only"
