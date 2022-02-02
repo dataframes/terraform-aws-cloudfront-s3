@@ -8,7 +8,7 @@ locals {
 
 resource "aws_cloudfront_distribution" "web" {
   origin {
-    domain_name = "${aws_s3_bucket.web.bucket_name}.s3-website-us-east-1.amazonaws.com"
+    domain_name = "${var.bucket_name}.s3-website-us-east-1.amazonaws.com"
     origin_id   = "${var.environment}-${var.name}"
 
     s3_origin_config {
